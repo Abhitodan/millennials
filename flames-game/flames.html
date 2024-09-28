@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="UTF-8">
+    <title>FLAMES - Discover Your Relationship</title>
+    <meta name="description" content="Relive the classic FLAMES game with a modern twist. Find out your relationship compatibility now!">
+    <meta name="keywords" content="FLAMES, Relationship, Compatibility, Game, Nostalgia, Love Calculator">
+    <meta name="author" content="Your Name">
+    
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/icons/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="flames.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <a href="../index.html" class="back-button" aria-label="Back to Home">← Back</a>
+            <h1>🔥 FLAMES 🔥</h1>
+            <p>Discover Your Relationship<span class="info-icon" title="Enter two names to find out your relationship compatibility using the classic FLAMES game."> ℹ️</span></p>
+        </div>
+    </header>
+    
+    <!-- Main Content Section -->
+    <main>
+        <section class="game-section">
+            <div class="container">
+                <!-- Progress Indicator -->
+                <div class="progress-indicator">
+                    <div class="progress-step active">1. Input Names</div>
+                    <div class="progress-step">2. Processing</div>
+                    <div class="progress-step">3. Result</div>
+                </div>
+                <!-- Name Input Fields -->
+                <form id="flamesForm" aria-label="FLAMES Game Form">
+                    <div class="input-group">
+                        <label for="name1">Your Name</label>
+                        <input type="text" id="name1" name="name1" placeholder="Enter Your Name" required aria-required="true">
+
+                        <label for="name2">Their Name</label>
+                        <input type="text" id="name2" name="name2" placeholder="Enter Their Name" required aria-required="true">
+                    </div>
+                    <!-- Calculate Button -->
+                    <button type="submit" id="calculateBtn" aria-label="Calculate your relationship based on the names entered">Calculate Your Relationship</button>
+                </form>
+                <!-- Process and Result Display -->
+                <div id="processContainer" aria-live="polite" aria-atomic="true">
+                    <!-- Dynamic content will be injected here -->
+                </div>
+                <!-- Share Button (Initially hidden) -->
+                <button id="shareBtn" style="display: none;">Download Result Image</button>
+
+                <!-- Shareable Image Template -->
+                <div id="resultImage" style="display: none;">
+                    <div class="image-template">
+                        <!-- Content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Millennial Games. All rights reserved.</p>
+        <p>Created by <strong>Abhitodan</strong> with the help of ChatGPT.</p>
+    </footer>
+
+    
+    <!-- Include html2canvas Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <!-- JavaScript File -->
+    <script src="flames.js"></script>
+</body>
+</html>

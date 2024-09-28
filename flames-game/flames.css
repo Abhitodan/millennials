@@ -1,0 +1,431 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Root Variables for Easy Theme Customization */
+:root {
+    --primary-color: #2F80ED;
+    --secondary-color: #56CCF2;
+    --accent-color: #BB6BD9;
+    --text-color: #333;
+    --background-color: #f5f7fa;
+    --white: #fff;
+    --error-color: #EB5757;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+header {
+    padding: 20px 0 15px 0; /* Reduced padding */
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 32px; /* Slightly reduced font size */
+    color: var(--primary-color);
+}
+
+header p {
+    margin: 5px 0 0 0;
+    font-size: 16px; /* Reduced font size */
+    color: var(--text-color);
+}
+
+header .back-button {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+header .back-button:hover {
+    text-decoration: underline;
+}
+
+.info-icon {
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+/* Main Content Styles */
+main {
+    padding: 15px 0; /* Reduced padding */
+}
+
+.game-section {
+    background-color: var(--white);
+    border-radius: 10px; /* Reduced border radius */
+    padding: 25px; /* Reduced padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+}
+
+/* Progress Indicator Styles */
+.progress-indicator {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px; /* Reduced margin */
+}
+
+.progress-step {
+    flex: 1;
+    text-align: center;
+    padding: 8px; /* Reduced padding */
+    background-color: var(--background-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0 4px;
+    font-size: 13px; /* Reduced font size */
+    font-weight: 500;
+}
+
+.progress-step.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Form Styles */
+form#flamesForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 15px; /* Reduced margin */
+}
+
+.input-group label {
+    font-size: 14px; /* Reduced font size */
+    margin-top: 8px; /* Reduced margin */
+    display: block;
+    text-align: left;
+    color: var(--text-color);
+}
+
+.input-group input {
+    padding: 10px; /* Reduced padding */
+    margin: 4px 0 8px 0; /* Reduced margins */
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Reduced border radius */
+    font-size: 15px; /* Reduced font size */
+    outline: none;
+    transition: border-color 0.3s;
+    color: var(--text-color);
+}
+
+.input-group input:focus {
+    border-color: var(--primary-color);
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+/* Button Styles */
+button#calculateBtn, #shareBtn {
+    padding: 10px 25px; /* Reduced padding */
+    font-size: 16px; /* Reduced font size */
+    color: var(--white);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 8px; /* Reduced border radius */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 12px; /* Reduced margin */
+    font-weight: 600;
+}
+
+button#calculateBtn:hover, #shareBtn:hover {
+    background-color: var(--secondary-color);
+}
+
+button#calculateBtn:active, #shareBtn:active {
+    transform: scale(0.98);
+}
+
+#shareBtn {
+    background-color: var(--accent-color);
+}
+
+#shareBtn:hover {
+    background-color: #9b51e0;
+}
+
+/* Process Container */
+#processContainer {
+    margin-top: 15px; /* Reduced margin */
+    min-height: 250px; /* Reduced min-height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Name Display */
+.names-display {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px; /* Reduced margin */
+    flex-wrap: wrap;
+}
+
+.name-item {
+    margin: 4px 8px; /* Reduced margins */
+    font-size: 20px; /* Reduced font size */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.name-letter {
+    display: inline-block;
+    margin: 0 2px;
+    font-weight: bold;
+    font-size: 26px; /* Reduced font size */
+    color: var(--primary-color);
+    transition: background-color 0.3s, color 0.3s;
+    padding: 4px 6px; /* Reduced padding */
+    border-radius: 4px; /* Reduced border radius */
+}
+
+.name-letter.highlight {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.name-letter.crossed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+/* Explanatory Text */
+.explanation {
+    font-size: 17px; /* Reduced font size */
+    color: var(--text-color);
+    margin-top: 12px; /* Reduced margin */
+    text-align: center;
+    animation: fadeIn 1s;
+    font-weight: 500;
+}
+
+/* Remaining Letters Count */
+.remaining-count {
+    font-size: 18px; /* Reduced font size */
+    margin: 12px 0; /* Reduced margins */
+    color: var(--text-color);
+    animation: fadeIn 1s;
+    font-weight: 600;
+}
+
+/* FLAMES Process */
+.flames-letter-container {
+    display: flex;
+    align-items: center;
+    margin-top: 12px; /* Reduced margin */
+}
+
+.flames-letter {
+    font-size: 26px; /* Reduced font size */
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 0 4px; /* Reduced margin */
+    position: relative;
+    transition: all 0.3s;
+    padding: 4px 6px; /* Reduced padding */
+    border-radius: 4px; /* Reduced border radius */
+}
+
+.flames-letter.highlight {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.flames-letter.eliminated {
+    color: #bbb;
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+/* Final Result */
+#finalResult {
+    font-size: 26px; /* Reduced font size */
+    font-weight: bold;
+    margin-top: 18px; /* Reduced margin */
+    opacity: 0;
+    transition: opacity 1s;
+    color: var(--accent-color);
+    text-align: center;
+    animation: fadeIn 2s forwards;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Error Message */
+.error-message {
+    font-size: 20px; /* Reduced font size */
+    color: var(--error-color);
+    margin-top: 12px; /* Reduced margin */
+    text-align: center;
+    animation: shake 0.5s;
+    font-weight: 600;
+}
+
+/* Shake Animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 12px 0; /* Reduced padding */
+    background-color: var(--white);
+    color: var(--text-color);
+    margin-top: 30px; /* Reduced margin */
+}
+
+footer p {
+    margin: 4px 0; /* Reduced margin */
+    font-size: 13px; /* Reduced font size */
+}
+
+footer .social-media {
+    margin-top: 8px; /* Reduced margin */
+}
+
+footer .social-media a {
+    margin: 0 6px; /* Reduced margin */
+    display: inline-block;
+}
+
+footer .social-media img {
+    width: 20px; /* Reduced size */
+    height: 20px;
+    transition: opacity 0.3s;
+}
+
+footer .social-media img:hover {
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 24px; /* Reduced font size */
+    }
+
+    header p {
+        font-size: 14px; /* Reduced font size */
+    }
+
+    .input-group label {
+        font-size: 13px; /* Reduced font size */
+    }
+
+    .input-group input {
+        font-size: 14px; /* Reduced font size */
+    }
+
+    button#calculateBtn, #shareBtn {
+        font-size: 15px; /* Reduced font size */
+    }
+
+    .name-letter, .flames-letter {
+        font-size: 20px; /* Reduced font size */
+        padding: 3px 5px; /* Reduced padding */
+    }
+
+    #finalResult {
+        font-size: 22px; /* Reduced font size */
+    }
+}
+
+/* Shareable Image Template */
+.image-template {
+    width: 600px;
+    height: 315px;
+    background: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px; /* Reduced padding */
+    border-radius: 10px; /* Reduced border radius */
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.image-content {
+    width: 100%;
+    padding: 15px; /* Reduced padding */
+    background-color: var(--white);
+    border-radius: 8px; /* Reduced border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+}
+
+.image-template h1 {
+    font-size: 30px; /* Reduced font size */
+    margin-bottom: 8px; /* Reduced margin */
+    color: var(--primary-color);
+}
+
+.image-template p {
+    font-size: 22px; /* Reduced font size */
+    margin: 4px 0; /* Reduced margin */
+    color: var(--text-color);
+}
+
+.result-text {
+    font-size: 34px; /* Reduced font size */
+    font-weight: bold;
+    margin-top: 8px; /* Reduced margin */
+}
+
+.names-text {
+    font-size: 26px; /* Reduced font size */
+    font-weight: bold;
+    margin: 8px 0; /* Reduced margin */
+    color: var(--text-color);
+}
+
+.names-text span {
+    margin: 0 4px; /* Reduced margin */
+    color: var(--primary-color);
+}
+
+.branding {
+    position: absolute;
+    bottom: 8px; /* Reduced margin */
+    font-size: 13px; /* Reduced font size */
+    color: #aaa;
+}
