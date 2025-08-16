@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe - Classic School Game</title>
+    <meta name="description" content="Play the classic Tic Tac Toe game - just like the good old school days!">
+    <meta name="keywords" content="Tic Tac Toe, XO, School Game, Nostalgia, Classic Game">
+    <meta name="author" content="Abhitodan">
+    
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/icons/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="tic-tac-toe.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <a href="../index.html" class="back-button" aria-label="Back to Home">← Back</a>
+            <h1>⭕ Tic Tac Toe ❌</h1>
+            <p>Classic School Game</p>
+        </div>
+    </header>
+    
+    <!-- Main Content Section -->
+    <main>
+        <section class="game-section">
+            <div class="container">
+                <!-- Game Info -->
+                <div class="game-info">
+                    <div class="current-player">
+                        <span>Current Player: </span>
+                        <span id="currentPlayerDisplay" class="player-x">X</span>
+                    </div>
+                    <div class="score-board">
+                        <div class="score">
+                            <span>X Wins: </span>
+                            <span id="xWins">0</span>
+                        </div>
+                        <div class="score">
+                            <span>O Wins: </span>
+                            <span id="oWins">0</span>
+                        </div>
+                        <div class="score">
+                            <span>Draws: </span>
+                            <span id="draws">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Board -->
+                <div class="game-board" id="gameBoard">
+                    <div class="cell" data-cell-index="0"></div>
+                    <div class="cell" data-cell-index="1"></div>
+                    <div class="cell" data-cell-index="2"></div>
+                    <div class="cell" data-cell-index="3"></div>
+                    <div class="cell" data-cell-index="4"></div>
+                    <div class="cell" data-cell-index="5"></div>
+                    <div class="cell" data-cell-index="6"></div>
+                    <div class="cell" data-cell-index="7"></div>
+                    <div class="cell" data-cell-index="8"></div>
+                </div>
+
+                <!-- Game Status -->
+                <div class="game-status">
+                    <p id="gameStatus">Player X's turn</p>
+                </div>
+
+                <!-- Game Controls -->
+                <div class="game-controls">
+                    <button id="resetBtn" class="control-btn">New Game</button>
+                    <button id="resetScoreBtn" class="control-btn secondary">Reset Score</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Millennial Games. All rights reserved.</p>
+        <p>Created by <strong>Abhitodan</strong> with the help of ChatGPT.</p>
+    </footer>
+
+    <!-- JavaScript File -->
+    <script src="tic-tac-toe.js"></script>
+</body>
+</html>

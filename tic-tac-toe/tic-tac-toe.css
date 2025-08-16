@@ -1,0 +1,246 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Root Variables for Easy Theme Customization */
+:root {
+    --primary-color: #2F80ED;
+    --secondary-color: #56CCF2;
+    --accent-color: #BB6BD9;
+    --text-color: #333;
+    --background-color: #f5f7fa;
+    --white: #fff;
+    --error-color: #EB5757;
+    --success-color: #27AE60;
+    --x-color: #E74C3C;
+    --o-color: #3498DB;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+header {
+    padding: 20px 0 15px 0;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 32px;
+    color: var(--primary-color);
+}
+
+header p {
+    margin: 5px 0 0 0;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+header .back-button {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: var(--white);
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+header .back-button:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Main Game Section */
+.game-section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* Game Info */
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.current-player {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.player-x {
+    color: var(--x-color);
+}
+
+.player-o {
+    color: var(--o-color);
+}
+
+.score-board {
+    display: flex;
+    gap: 20px;
+}
+
+.score {
+    font-weight: 600;
+}
+
+/* Game Board */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    max-width: 300px;
+    margin: 0 auto 30px auto;
+    background-color: var(--primary-color);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.cell {
+    aspect-ratio: 1;
+    background-color: var(--white);
+    border: none;
+    font-size: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.cell:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.05);
+}
+
+.cell.x {
+    color: var(--x-color);
+}
+
+.cell.o {
+    color: var(--o-color);
+}
+
+.cell.winning {
+    background-color: var(--success-color);
+    color: var(--white);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Game Status */
+.game-status {
+    margin-bottom: 30px;
+}
+
+.game-status p {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Game Controls */
+.game-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.control-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn.secondary {
+    background-color: var(--secondary-color);
+}
+
+.control-btn.secondary:hover {
+    background-color: var(--accent-color);
+}
+
+/* Footer Styles */
+footer {
+    background-color: #34495e;
+    color: #ecf0f1;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .score-board {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .game-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .control-btn {
+        width: 200px;
+    }
+    
+    header .back-button {
+        position: static;
+        transform: none;
+        margin-bottom: 15px;
+    }
+}
