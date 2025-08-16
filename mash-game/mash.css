@@ -1,0 +1,344 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Root Variables for Easy Theme Customization */
+:root {
+    --primary-color: #9B59B6;
+    --secondary-color: #E67E22;
+    --accent-color: #F39C12;
+    --text-color: #333;
+    --background-color: #f5f7fa;
+    --white: #fff;
+    --error-color: #EB5757;
+    --success-color: #27AE60;
+    --mystical-purple: #8E44AD;
+    --mystical-gold: #F1C40F;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+header {
+    padding: 20px 0 15px 0;
+    text-align: center;
+    position: relative;
+    color: var(--white);
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 32px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    margin: 5px 0 0 0;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+header .back-button {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid var(--white);
+    transition: all 0.3s ease;
+}
+
+header .back-button:hover {
+    background-color: var(--white);
+    color: var(--primary-color);
+}
+
+header .info-icon {
+    cursor: pointer;
+    opacity: 0.8;
+    margin-left: 5px;
+}
+
+/* Main Game Section */
+.game-section {
+    padding: 40px 0;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    gap: 20px;
+}
+
+.progress-step {
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border-radius: 25px;
+    font-weight: 600;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active {
+    background-color: var(--mystical-gold);
+    color: var(--text-color);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Input Section */
+.input-section {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.1);
+}
+
+.continue-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--primary-color), var(--mystical-purple));
+    color: var(--white);
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.continue-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(155, 89, 182, 0.3);
+}
+
+/* Number Section */
+.number-section {
+    text-align: center;
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.number-section h3 {
+    color: var(--primary-color);
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.number-section p {
+    color: var(--text-color);
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.number-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.number-btn {
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    color: var(--white);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.number-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Results Section */
+.results-section {
+    text-align: center;
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.results-section h3 {
+    color: var(--primary-color);
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.result-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    color: var(--white);
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-label {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.result-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--mystical-gold);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.result-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.play-again-btn, .share-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.play-again-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--mystical-purple));
+    color: var(--white);
+}
+
+.share-btn {
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    color: var(--white);
+}
+
+.play-again-btn:hover, .share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer Styles */
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--white);
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 5px 0;
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .progress-indicator {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .input-section, .number-section, .results-section {
+        padding: 25px 20px;
+    }
+    
+    .number-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 200px;
+    }
+    
+    .result-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .play-again-btn, .share-btn {
+        width: 200px;
+    }
+    
+    header .back-button {
+        position: static;
+        transform: none;
+        margin-bottom: 15px;
+    }
+    
+    .result-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+}

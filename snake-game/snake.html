@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="UTF-8">
+    <title>Snake Game - Nokia Nostalgia</title>
+    <meta name="description" content="Play the classic Snake game - just like on old Nokia phones!">
+    <meta name="keywords" content="Snake Game, Nokia, Retro Game, Classic Mobile Game, Nostalgia">
+    <meta name="author" content="Abhitodan">
+    
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/icons/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="snake.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <a href="../index.html" class="back-button" aria-label="Back to Home">← Back</a>
+            <h1>🐍 Snake Game 📱</h1>
+            <p>Nokia Nostalgia<span class="info-icon" title="Just like the classic Snake game on Nokia phones!"> ℹ️</span></p>
+        </div>
+    </header>
+    
+    <!-- Main Content Section -->
+    <main>
+        <section class="game-section">
+            <div class="container">
+                <!-- Game Info -->
+                <div class="game-info">
+                    <div class="score-display">
+                        <span>Score: </span>
+                        <span id="currentScore">0</span>
+                    </div>
+                    <div class="high-score">
+                        <span>High Score: </span>
+                        <span id="highScore">0</span>
+                    </div>
+                </div>
+
+                <!-- Game Status -->
+                <div class="game-status">
+                    <p id="gameStatus">Press SPACE to start or use arrow keys to move</p>
+                </div>
+
+                <!-- Game Board -->
+                <div class="game-container">
+                    <canvas id="gameCanvas" width="400" height="400"></canvas>
+                </div>
+
+                <!-- Mobile Controls -->
+                <div class="mobile-controls">
+                    <div class="control-row">
+                        <button class="control-btn" id="upBtn">↑</button>
+                    </div>
+                    <div class="control-row">
+                        <button class="control-btn" id="leftBtn">←</button>
+                        <button class="control-btn" id="downBtn">↓</button>
+                        <button class="control-btn" id="rightBtn">→</button>
+                    </div>
+                </div>
+
+                <!-- Game Controls -->
+                <div class="game-controls">
+                    <button id="startBtn" class="control-button">Start Game</button>
+                    <button id="pauseBtn" class="control-button secondary">Pause</button>
+                    <button id="resetBtn" class="control-button secondary">Reset</button>
+                </div>
+
+                <!-- Instructions -->
+                <div class="instructions">
+                    <h3>How to Play</h3>
+                    <ul>
+                        <li>Use arrow keys or touch controls to move the snake</li>
+                        <li>Eat the red food to grow and increase your score</li>
+                        <li>Don't hit the walls or your own tail!</li>
+                        <li>Press SPACE to start/pause the game</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Millennial Games. All rights reserved.</p>
+        <p>Created by <strong>Abhitodan</strong> with the help of ChatGPT.</p>
+    </footer>
+
+    <!-- JavaScript File -->
+    <script src="snake.js"></script>
+</body>
+</html>

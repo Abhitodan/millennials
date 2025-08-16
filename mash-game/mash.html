@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="UTF-8">
+    <title>MASH - Fortune Telling Game</title>
+    <meta name="description" content="Play the classic MASH fortune-telling game - predict your future like in the good old school days!">
+    <meta name="keywords" content="MASH, Fortune Telling, School Game, Nostalgia, Future Prediction">
+    <meta name="author" content="Abhitodan">
+    
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/icons/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="mash.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <a href="../index.html" class="back-button" aria-label="Back to Home">← Back</a>
+            <h1>🏠 MASH 🔮</h1>
+            <p>Predict Your Future<span class="info-icon" title="MASH (Mansion, Apartment, Shack, House) - The classic fortune-telling game from school days"> ℹ️</span></p>
+        </div>
+    </header>
+    
+    <!-- Main Content Section -->
+    <main>
+        <section class="game-section">
+            <div class="container">
+                <!-- Progress Indicator -->
+                <div class="progress-indicator">
+                    <div class="progress-step active">1. Fill Details</div>
+                    <div class="progress-step">2. Choose Number</div>
+                    <div class="progress-step">3. Your Future</div>
+                </div>
+
+                <!-- Input Form -->
+                <div id="inputSection" class="input-section">
+                    <form id="mashForm">
+                        <div class="input-group">
+                            <label for="yourName">Your Name</label>
+                            <input type="text" id="yourName" name="yourName" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Future Partners (3 names)</label>
+                            <input type="text" id="partner1" placeholder="Partner 1" required>
+                            <input type="text" id="partner2" placeholder="Partner 2" required>
+                            <input type="text" id="partner3" placeholder="Partner 3" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Dream Cars (3 cars)</label>
+                            <input type="text" id="car1" placeholder="Car 1" required>
+                            <input type="text" id="car2" placeholder="Car 2" required>
+                            <input type="text" id="car3" placeholder="Car 3" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Dream Jobs (3 jobs)</label>
+                            <input type="text" id="job1" placeholder="Job 1" required>
+                            <input type="text" id="job2" placeholder="Job 2" required>
+                            <input type="text" id="job3" placeholder="Job 3" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Dream Locations (3 places)</label>
+                            <input type="text" id="location1" placeholder="Location 1" required>
+                            <input type="text" id="location2" placeholder="Location 2" required>
+                            <input type="text" id="location3" placeholder="Location 3" required>
+                        </div>
+
+                        <button type="submit" class="continue-btn">Continue to Magic Number</button>
+                    </form>
+                </div>
+
+                <!-- Number Selection -->
+                <div id="numberSection" class="number-section" style="display: none;">
+                    <h3>Pick Your Magic Number (3-10)</h3>
+                    <p>Choose a number between 3 and 10 to determine your destiny!</p>
+                    <div class="number-buttons">
+                        <button class="number-btn" data-number="3">3</button>
+                        <button class="number-btn" data-number="4">4</button>
+                        <button class="number-btn" data-number="5">5</button>
+                        <button class="number-btn" data-number="6">6</button>
+                        <button class="number-btn" data-number="7">7</button>
+                        <button class="number-btn" data-number="8">8</button>
+                        <button class="number-btn" data-number="9">9</button>
+                        <button class="number-btn" data-number="10">10</button>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div id="resultsSection" class="results-section" style="display: none;">
+                    <h3>🔮 Your Future Revealed! 🔮</h3>
+                    <div class="result-card">
+                        <div class="result-item">
+                            <span class="result-label">You will live in a:</span>
+                            <span class="result-value" id="resultHome">Mansion</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">You will marry:</span>
+                            <span class="result-value" id="resultPartner">Partner Name</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">You will drive a:</span>
+                            <span class="result-value" id="resultCar">Ferrari</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Your job will be:</span>
+                            <span class="result-value" id="resultJob">Doctor</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">You will live in:</span>
+                            <span class="result-value" id="resultLocation">Paris</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Number of kids:</span>
+                            <span class="result-value" id="resultKids">2</span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button id="playAgainBtn" class="play-again-btn">Play Again</button>
+                        <button id="shareResultBtn" class="share-btn">Share Your Future</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Millennial Games. All rights reserved.</p>
+        <p>Created by <strong>Abhitodan</strong> with the help of ChatGPT.</p>
+    </footer>
+
+    <!-- JavaScript File -->
+    <script src="mash.js"></script>
+</body>
+</html>
