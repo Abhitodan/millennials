@@ -21,6 +21,9 @@
         
         #canvas3d { 
             display: block; 
+            border: 2px solid #333;
+            border-radius: 8px;
+            background: #f0f0f0;
         }
         
         #ui { 
@@ -362,9 +365,19 @@
     </div>
 
     <script type="module">
-        // Import Three.js and controls from CDN
-        import * as THREE from 'https://cdn.skypack.dev/three@0.158.0';
-        import { OrbitControls } from 'https://cdn.skypack.dev/three@0.158.0/examples/jsm/controls/OrbitControls.js';
+        // Import Three.js and controls from CDN with fallback
+        let THREE, OrbitControls;
+        let use3D = true;
+        
+        try {
+            const threeModule = await import('https://cdn.skypack.dev/three@0.158.0');
+            const controlsModule = await import('https://cdn.skypack.dev/three@0.158.0/examples/jsm/controls/OrbitControls.js');
+            THREE = threeModule.default || threeModule;
+            OrbitControls = controlsModule.OrbitControls;
+        } catch (error) {
+            console.warn('Three.js CDN failed, falling back to 2D mode:', error);
+            use3D = false;
+        }
 
         /**
          * Chess Engine - Pure logic implementation
@@ -1328,10 +1341,141 @@
         }
 
         /**
+         * 2D Fallback Renderer - Simple canvas-based chess board
+         */
+        class Renderer2D {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.canvas.width = 800;
+                this.canvas.height = 800;
+                this.squareSize = 100;
+                this.selectedSquare = null;
+                this.legalMoves = [];
+                
+                this.setupEventListeners();
+                this.draw();
+            }
+            
+            updateBoard(board) {
+                this.board = board;
+                this.draw();
+            }
+            
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                // Draw board
+                for (let row = 0; row < 8; row++) {
+                    for (let col = 0; col < 8; col++) {
+                        const isLight = (row + col) % 2 === 0;
+                        this.ctx.fillStyle = isLight ? '#F0D9B5' : '#B58863';
+                        this.ctx.fillRect(col * this.squareSize, row * this.squareSize, this.squareSize, this.squareSize);
+                        
+                        // Draw pieces
+                        if (this.board && this.board[row][col]) {
+                            this.drawPiece(this.board[row][col], col * this.squareSize + 50, row * this.squareSize + 50);
+                        }
+                    }
+                }
+                
+                // Draw highlights
+                this.drawHighlights();
+            }
+            
+            drawPiece(piece, x, y) {
+                const pieceSymbols = {
+                    'K': '♔', 'Q': '♕', 'R': '♖', 'B': '♗', 'N': '♘', 'P': '♙',
+                    'k': '♚', 'q': '♛', 'r': '♜', 'b': '♝', 'n': '♞', 'p': '♟'
+                };
+                
+                this.ctx.font = '60px serif';
+                this.ctx.textAlign = 'center';
+                this.ctx.textBaseline = 'middle';
+                this.ctx.fillStyle = piece === piece.toUpperCase() ? '#FFFFFF' : '#000000';
+                this.ctx.strokeStyle = piece === piece.toUpperCase() ? '#000000' : '#FFFFFF';
+                this.ctx.lineWidth = 2;
+                
+                const symbol = pieceSymbols[piece] || '?';
+                this.ctx.fillText(symbol, x, y);
+                this.ctx.strokeText(symbol, x, y);
+            }
+            
+            drawHighlights() {
+                if (this.selectedSquare) {
+                    const [row, col] = this.selectedSquare;
+                    this.ctx.strokeStyle = '#FF0000';
+                    this.ctx.lineWidth = 4;
+                    this.ctx.strokeRect(col * this.squareSize, row * this.squareSize, this.squareSize, this.squareSize);
+                }
+                
+                // Draw legal move dots
+                this.legalMoves.forEach(([row, col]) => {
+                    this.ctx.fillStyle = 'rgba(0, 255, 0, 0.6)';
+                    this.ctx.beginPath();
+                    this.ctx.arc(col * this.squareSize + 50, row * this.squareSize + 50, 15, 0, 2 * Math.PI);
+                    this.ctx.fill();
+                });
+            }
+            
+            highlightSquares(squares, type = 'legal') {
+                this.legalMoves = squares;
+                this.draw();
+            }
+            
+            clearHighlights() {
+                this.legalMoves = [];
+                this.selectedSquare = null;
+                this.draw();
+            }
+            
+            animateMove(move, onComplete) {
+                // Simple animation - just update immediately
+                setTimeout(onComplete, 100);
+            }
+            
+            getIntersectedObject(x, y) {
+                const rect = this.canvas.getBoundingClientRect();
+                const canvasX = x - rect.left;
+                const canvasY = y - rect.top;
+                
+                const col = Math.floor(canvasX / this.squareSize);
+                const row = Math.floor(canvasY / this.squareSize);
+                
+                if (row >= 0 && row < 8 && col >= 0 && col < 8) {
+                    return {
+                        object: {
+                            userData: { row, col, type: 'square' }
+                        }
+                    };
+                }
+                return null;
+            }
+            
+            setupEventListeners() {
+                this.canvas.addEventListener('click', (e) => {
+                    if (window.chessGame && window.chessGame.ui) {
+                        window.chessGame.ui.handleCanvasClick(e);
+                    }
+                });
+                
+                window.addEventListener('resize', () => {
+                    // Keep canvas size fixed for simplicity
+                });
+            }
+            
+            setShadowsEnabled() {} // No-op for 2D
+            setAnimationSpeed() {} // No-op for 2D
+        }
+        /**
          * 3D Renderer - Handles Three.js scene, pieces, board, and animations
          */
         class Renderer3D {
             constructor(canvas) {
+                if (!THREE) {
+                    throw new Error('Three.js not available');
+                }
+                
                 this.canvas = canvas;
                 this.scene = new THREE.Scene();
                 this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -2215,7 +2359,19 @@
         class ChessGame {
             constructor() {
                 this.engine = new ChessEngine();
-                this.renderer = new Renderer3D(document.getElementById('canvas3d'));
+                
+                // Try 3D renderer first, fallback to 2D
+                try {
+                    if (use3D && THREE) {
+                        this.renderer = new Renderer3D(document.getElementById('canvas3d'));
+                    } else {
+                        throw new Error('3D not available');
+                    }
+                } catch (error) {
+                    console.log('Using 2D fallback renderer');
+                    this.renderer = new Renderer2D(document.getElementById('canvas3d'));
+                }
+                
                 this.ai = new AIPlayer(this.engine);
                 this.ui = new GameUI(this.engine, this.renderer, this.ai);
                 
@@ -2296,7 +2452,9 @@
         }
 
         // Initialize the game when page loads
-        window.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('DOMContentLoaded', async () => {
+            // Wait a bit for imports to resolve
+            await new Promise(resolve => setTimeout(resolve, 1000));
             window.chessGame = new ChessGame();
         });
 
